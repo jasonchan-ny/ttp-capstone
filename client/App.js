@@ -5,11 +5,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import MainNavigator from './navigators/MainNavigator';
+import LoginNavigator from './navigators/LoginNavigator';
+
 
 export default function App() {
+  const signedIn = false;
   return (
     <NavigationContainer>
-      <MainNavigator />
+      {signedIn ? (
+        <MainNavigator/>
+      ) : (
+        <LoginNavigator/>
+      )}
     </NavigationContainer>
   );
 }
