@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-export default function Register() {
+export default function Login() {
     const [username, setUsername] = useState('username');
     const [password, setPassword] = useState('password');
 
@@ -19,6 +19,9 @@ export default function Register() {
                 value={password}
             />
             <TouchableOpacity>
+                <Text>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
                 <Text>Register</Text>
             </TouchableOpacity>
         </View>
@@ -33,9 +36,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     input: {
-
-    },
-    login: {
 
     },
     register: {
