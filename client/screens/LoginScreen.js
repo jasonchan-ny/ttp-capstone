@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
     const [username, setUsername] = useState('username');
     const [password, setPassword] = useState('password');
 
@@ -18,10 +18,11 @@ export default function LoginScreen() {
                 onChangeText={pass => setPassword(pass)}
                 value={password}
             />
+            {/* TODO Validate login and api call */}
             <TouchableOpacity>
                 <Text>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                 <Text>Register</Text>
             </TouchableOpacity>
         </View>
