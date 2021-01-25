@@ -18,6 +18,7 @@ export default function RegisterScreen() {
                 onChangeText={pass => setPassword(pass)}
                 value={password}
             />
+            {/* TODO Validate register and api call for new user */}
             <TouchableOpacity>
                 <Text>Register</Text>
             </TouchableOpacity>
