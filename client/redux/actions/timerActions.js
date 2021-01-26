@@ -1,12 +1,18 @@
-export const decrement = () => {
+export const toggleTimerStart = () => {
     return {
-        type: 'DECREMENT'
+        type: "START_STOP_TIMER"
     }
 };
 
-export const setTime = (time) => {
+export const setTimerDuration = (time) => {
     return {
-        type: 'SET_TIME',
+        type: "SET_TIMER",
         payload: time
     }
 };
+
+export const resetTimer = () => {
+    return {
+        type: "RESET_TIMER"
+    }
+}
