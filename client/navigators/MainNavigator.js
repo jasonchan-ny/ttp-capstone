@@ -10,7 +10,7 @@ export default function MainNavigator() {
         <Tab.Navigator>
             <Tab.Screen name='History' component={HistoryScreen} />
             <Tab.Screen name='Timer' component={TimerScreen} />
-            <Tab.Screen name='NewWorkout' component={NewWorkoutScreen} />
+            <Tab.Screen name='New Workout' component={NewWorkoutScreen} />
         </Tab.Navigator>
     )
 }

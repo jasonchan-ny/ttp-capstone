@@ -22,3 +22,16 @@ export const register = () => {
         type: 'REGISTER'
     }
 }
+
+export const validLogin = (credentials) => {
+    return {
+        type: 'LOGIN_VALID',
+        payload: credentials
+    }
+}
+
+export const invalidLogin = () => {
+    return {
+        type: 'LOGIN_INVALID',
+    }
+}
