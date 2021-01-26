@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Timer } from "react-native-stopwatch-timer";
-import { StyleSheet, Text, View, TouchableHighlight, Vibration } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Vibration } from "react-native";
 
 import {
   toggleTimerStart,
@@ -35,7 +35,7 @@ export default function MyTimer() {
         handleFinish={() => {}} //Broken function must pass empty function 
         getTime={time => timerAlert(time)}
       />
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => {
           dispatch(toggleTimerStart());
         }}
@@ -43,14 +43,14 @@ export default function MyTimer() {
         <Text style={styles.buttonText}>
           {!isTimerStart ? "START" : "STOP"}
         </Text>
-      </TouchableHighlight>
-      <TouchableHighlight
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={() => {
           dispatch(resetTimer());
         }}
       >
         <Text style={styles.buttonText}>CLEAR</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -64,17 +64,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    marginTop: 10,
+    margin: 8,
   },
 });
 
 const options = {
   container: {
-    backgroundColor: "#FF0000",
+    backgroundColor: "tomato",
     padding: 5,
     borderRadius: 5,
     width: 200,
     alignItems: "center",
+    margin: 5,
   },
   text: {
     fontSize: 25,
