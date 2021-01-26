@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Timer } from "react-native-stopwatch-timer";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, TouchableHighlight, Vibration } from "react-native";
 
 import {
   toggleTimerStart,
@@ -19,6 +19,7 @@ export default function MyTimer() {
   const timerAlert = (time) => { 
     if(isTimerStart && time == '00:00:00:000'){
       alert('Timer done')
+      Vibration.vibrate();
       dispatch(toggleTimerStart());
     }
   }
