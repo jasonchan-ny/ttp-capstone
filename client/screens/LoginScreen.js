@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { login } from '../redux/actions'
+import { login, setUsername, setPassword } from '../redux/actions'
 
 export default function LoginScreen({ navigation }) {
     const username = useSelector(state => state.user.username);
@@ -20,12 +20,12 @@ export default function LoginScreen({ navigation }) {
             
             <TextInput 
                 style={styles.input}
-                onChangeText={user => setUsername(user)}
+                onChangeText={user => dispatch(setUsername(user))}
                 value={username}
             />
             <TextInput
                 style={styles.input}
-                onChangeText={pass => setPassword(pass)}
+                onChangeText={pass => dispatch(setPassword(pass))}
                 value={password}
             />
 
