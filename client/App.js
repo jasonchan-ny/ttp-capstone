@@ -1,39 +1,15 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-// import { Provider as PaperProvider } from 'react-native-paper'
-import MainNavigator from './navigators/MainNavigator';
-import LoginNavigator from './navigators/LoginNavigator';
+import { Provider } from 'react-redux';
 
-// const theme = {
-//   ...DefaultTheme,
-//   colors: {
-//       ...DefaultTheme.colors,
-//       primary: "tomato",
-//       accent: "yellow"
-//   }
-// };
+import store from './redux/store';
+import MasterNavigator from './navigators/MasterNavigator'
 
 export default function App() {
-  const signedIn = true;
+  
   return (
-    <NavigationContainer>
-      {signedIn ? (
-        <MainNavigator/>
-      ) : (
-        <LoginNavigator/>
-      )}
-    </NavigationContainer>
+    <Provider store={store}>
+      <MasterNavigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
