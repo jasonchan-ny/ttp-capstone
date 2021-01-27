@@ -1,12 +1,32 @@
-const timerReducer = (state = 60, action) => {
-    switch(action.type){
-        case 'DECREMENT':
-            return state - 1;
-        case 'SET_TIME':
-            return action.payload;
-        default:
-            return state;
-    }
+const initState = {
+  isTimerStart: false,
+  isTimerReset: false,
+  timerDuration: 90000,
 };
 
-export default timerReducer
+const timerReducer = (state = initState, action) => {
+  switch (action.type) {
+    case "START_STOP_TIMER":
+      return {
+        isTimerStart: !state.isTimerStart,
+        timerDuration: state.timerDuration,
+        isTimerReset: false,
+      };
+    case "RESET_TIMER":
+      return {
+        isTimerStart: false,
+        timerDuration: 90000,
+        isTimerReset: true,
+      };
+    case "SET_TIMER":
+      return {
+        isTimerStart: state.isTimerStart,
+        timerDuration: action.payload,
+        isTimerReset: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export default timerReducer;
