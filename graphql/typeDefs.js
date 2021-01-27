@@ -6,6 +6,13 @@ module.exports = gql`
     type Workout{ 
         id: ID!
         bodypart: String! 
+        sets: [Set]!
+    }
+    type Set{ 
+        id: ID!
+        reps: Int!
+        weight: Int!
+        name: String!
     }
     type User{ 
         id: ID!
@@ -30,5 +37,12 @@ module.exports = gql`
         login(username: String!, password: String!): User!
         createWorkout(bodypart: String!): Workout!
         deleteWorkout(workoutId: ID!):Workout!
+        createSet(workoutId: String!, name: String!, weight:Int!, reps:Int!): Workout!
     }
 `
+/*type Set{ 
+    id: ID!
+    name: String!
+    weight: Int!
+    reps: Int!
+} */

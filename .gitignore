@@ -2,3 +2,4 @@ node_modules
 .expo
 client/node_modules
 client/.expo
+config.js
