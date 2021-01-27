@@ -13,7 +13,7 @@ export default function ExcerciseCard() {
                 placeholderTextColor={"rgba(0, 0, 0, .7)"}
             />
             {sets}
-            <TouchableOpacity onPress={() => setSets([...sets, <SetCard/>])}>
+            <TouchableOpacity onPress={() => setSets([...sets, <SetCard key={sets.length} setNumber={sets.length+1}/>])}>
                 <Text>+</Text>
             </TouchableOpacity>
         </View>

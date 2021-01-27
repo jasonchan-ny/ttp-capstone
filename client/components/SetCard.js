@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text, TextInput } from 'react-native'
 
-export default function SetCard() {
+export default function SetCard({setNumber}) {
     let reps, weight;
     return (
         <View>
+            <Text>Set #{setNumber}</Text>
             <Text>Reps</Text>
             <TextInput 
                 //style={}
