@@ -2,12 +2,11 @@ const { model, Schema } = require ('mongoose')
 
 const workoutSchema = new Schema({ 
     bodypart: String,
-    exercises: [{ 
+    sets: [{ 
         name: String, 
-        sets: Number,
         reps: Number,
         weight: Number
-    }
+    },
     ],
     user: { 
         type: Schema.Types.ObjectId, 

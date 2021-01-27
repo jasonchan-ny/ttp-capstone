@@ -43,16 +43,30 @@ module.exports = {
             const user = checkAuth(context)
 
             try{ 
-                const post = await Workout.findById(workoutId)
+                const workout = await Workout.findById(workoutId)
                 if (user.username === workout.username){ 
                     await workout.delete()
-                    return 'Post deleted'
+                    return 'Workout deleted'
                 } else {
                     throw new AuthentificationError('Action not allowed')
                 }
             }catch (err){ 
                 throw new Error(err)
             }
-        }
+        },
+
+        
     }
-}
+} 
+/*async addSet(_, {workoutId, name, reps, weight}, context) { 
+            const user = checkAuth(context)
+            console.log(name)
+            const newSet = { 
+                name:name,
+                reps: reps,
+                weight: weight
+            }
+            console.log("hello")
+            const workout = await Workout.findById(workoutId)
+            return workout
+    }, */
