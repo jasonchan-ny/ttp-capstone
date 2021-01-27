@@ -1,4 +1,4 @@
-const initState = {username: 'username', password: 'password'}
+const initState = {username: '', password: ''}
 
 const userReducer = (state=initState, action) => {
     switch(action.type){
