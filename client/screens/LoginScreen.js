@@ -6,6 +6,7 @@ import { login, setUsername, setPassword } from '../redux/actions'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/AntDesign'
 import FlatButton from '../components/button'
+import Logo from '../assets/logo.png'
 
 const {width: WIDTH} = Dimensions.get('window')
 
@@ -23,8 +24,7 @@ export default function LoginScreen({ navigation }) {
         <View style = {styles.container}>
             <Image source = {{uri: "https://lh3.googleusercontent.com/proxy/W1YTe_z9AziIWPo0FG9sZ0eo8rx3MbvW4F4VJgAsr_7ztxhggacx65FUhWzw0U97221IDkf28OZBdtzrD7rAe3KxbZ6Uc6w80Fw9_jFCG-GqMr0zGT5XwNDx5y3tjC6vros"}}
             style = {{width: 40, height: 40}}/>
-            {/* <Image source = {{uri: "https://www.pngkey.com/png/full/650-6509695_world-gym-logo-png.png"}}/> */}
-            
+   
             <Text style = {styles.text}>Enter Your Cresidentials {"\n"}</Text>
             
             <View>
