@@ -44,10 +44,27 @@ export default function RegisterScreen({ navigation }) {
         />
         <TextInput
           style={styles.input}
+          placeholder={"Enter Email"}
+          placeholderTextColor={"rgba(255, 255, 255, .7)"}
+          underlineColorAndroid="transparent"
+          //onChangeText={(user) => dispatch(setUsername(user))}
+          //value={username}
+        />
+      </View>
+      <Text>{"\n"}</Text>
+      <View>
+        <Icon
+          name={"ios-person-outline"}
+          size={28}
+          color={"rgba(255, 255, 255, .7)"}
+          style={styles.inputIcon}
+        />
+        <TextInput
+          style={styles.input}
           placeholder={"Enter Username"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          onChangeText={(user) => setUsername(user)}
+          onChangeText={(user) => dispatch(setUsername(user))}
           value={username}
         />
       </View>
@@ -65,8 +82,8 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Enter Password"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          onChangeText={(pass) => setPassword(pass)}
-          value={password}
+          //onChangeText={(pass) => setPassword(pass)}
+          //value={password}
         />
       </View>
       <Text>{"\n"}</Text>
@@ -83,8 +100,8 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Confirm Password"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          onChangeText={(pass) => dispatch(setPassword(pass))}
-          value={password}
+          //onChangeText={(pass) => dispatch(setPassword(pass))}
+          //value={password}
         />
       </View>
 
