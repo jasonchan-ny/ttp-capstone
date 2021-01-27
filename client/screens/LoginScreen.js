@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-import { View, Button, Text, Image, StyleSheet, TextInput, Dimensions, TouchableOpacity, DynamicColorIOS } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { useDispatch, useSelector } from 'react-redux'
-import { login, setUsername, setPassword } from '../redux/actions'
-import Icon from 'react-native-vector-icons/Ionicons'
-import Icon2 from 'react-native-vector-icons/AntDesign'
-import FlatButton from '../components/button'
-import Logo from '../assets/logo.png'
-=======
 import React, { useState } from "react";
 import {
   View,
@@ -27,7 +16,6 @@ import { login, setUsername, setPassword } from "../redux/actions";
 import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/AntDesign";
 import FlatButton from "../components/button";
->>>>>>> 71d8f7272ea80542da31e3b6e2639bdcb4cf00ba
 
 const { width: WIDTH } = Dimensions.get("window");
 
@@ -41,63 +29,13 @@ export default function LoginScreen({ navigation }) {
     dispatch(login());
   };
 
-<<<<<<< HEAD
-    return(
-        <View style = {styles.container}>
-            <Image source = {{uri: "https://lh3.googleusercontent.com/proxy/W1YTe_z9AziIWPo0FG9sZ0eo8rx3MbvW4F4VJgAsr_7ztxhggacx65FUhWzw0U97221IDkf28OZBdtzrD7rAe3KxbZ6Uc6w80Fw9_jFCG-GqMr0zGT5XwNDx5y3tjC6vros"}}
-            style = {{width: 40, height: 40}}/>
-   
-            <Text style = {styles.text}>Enter Your Cresidentials {"\n"}</Text>
-            
-            <View>
-                <Icon 
-                name = {'ios-person-outline'} 
-                size = {28} color = {'rgba(255, 255, 255, .7)'} 
-                style = {styles.inputIcon}
-                />
-                <TextInput 
-                style = {styles.input}
-                placeholder = {'Username'}
-                placeholderTextColor = {'rgba(255, 255, 255, .7)'}
-                underlineColorAndroid = 'transparent'
-                onChangeText = {user => dispatch(setUsername(user))}
-                value = {username}
-                />
-            </View>
-            <Text>{"\n"}</Text>
-            <View>
-                <Icon2 
-                name = {'lock1'}
-                size = {28} color = {'rgba(255, 255, 255, .7)'} 
-                style = {styles.inputIcon}
-                />
-                <TextInput
-                style = {styles.input}
-                secureTextEntry = {true}
-                placeholder = {'Password'}
-                placeholderTextColor = {'rgba(255, 255, 255, .7)'}
-                underlineColorAndroid = 'transparent'
-                onChangeText = {pass => dispatch(setPassword(pass))}
-                value = {password}
-                />
-            </View>
-            <Text>{"\n"}</Text>
-=======
   return (
     <View style={styles.container}>
->>>>>>> 71d8f7272ea80542da31e3b6e2639bdcb4cf00ba
 
       <Image style={styles.logo} source={require("../assets/logo.png")} />
 
       <Text style={styles.text}>Enter Your Credentials{"\n"}</Text>
 
-<<<<<<< HEAD
-            <TouchableOpacity onPress = {() => navigation.navigate('Register')}>
-                <Text style = {styles.register}>Register</Text>
-            </TouchableOpacity>
-        </View>
-    )
-=======
       <View>
         <Icon
           name={"ios-person-outline"}
@@ -146,7 +84,6 @@ export default function LoginScreen({ navigation }) {
       </TouchableOpacity>
     </View>
   );
->>>>>>> 71d8f7272ea80542da31e3b6e2639bdcb4cf00ba
 }
 
 const styles = StyleSheet.create({

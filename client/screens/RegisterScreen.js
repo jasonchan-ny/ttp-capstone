@@ -20,13 +20,8 @@ import FlatButton from "../components/button";
 const { width: WIDTH } = Dimensions.get("window");
 
 export default function RegisterScreen({ navigation }) {
-<<<<<<< HEAD
-    const username = useSelector(state => state.user.username);
-    const password = useSelector(state => state.user.password);
-=======
   const username = useSelector((state) => state.user.username);
   const password = useSelector((state) => state.user.password);
->>>>>>> 71d8f7272ea80542da31e3b6e2639bdcb4cf00ba
 
   const dispatch = useDispatch();
 
@@ -38,63 +33,7 @@ export default function RegisterScreen({ navigation }) {
     <View style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo.png")} />
 
-<<<<<<< HEAD
-    return(
-        <View style = {styles.container}>            
-            <Text style = {styles.text}>Sign Up Today! {"\n"}</Text>
-            
-            <View>
-                <Icon 
-                name = {'ios-person-outline'} 
-                size = {28} color = {'rgba(255, 255, 255, .7)'} 
-                style = {styles.inputIcon}
-                />
-                <TextInput 
-                style = {styles.input}
-                placeholder = {'Enter Username'}
-                placeholderTextColor = {'rgba(255, 255, 255, .7)'}
-                underlineColorAndroid = 'transparent'
-                onChangeText = {user => setUsername(user)}
-                value = {username}
-                />
-            </View>
-            <Text>{"\n"}</Text>
-            <View>
-                <Icon2 
-                name = {'lock1'}
-                size = {28} color = {'rgba(255, 255, 255, .7)'} 
-                style = {styles.inputIcon}
-                />
-                <TextInput
-                style = {styles.input}
-                secureTextEntry = {true}
-                placeholder = {'Enter Password'}
-                placeholderTextColor = {'rgba(255, 255, 255, .7)'}
-                underlineColorAndroid = 'transparent'
-                onChangeText = {pass => setPassword(pass)}
-                value = {password}
-                />
-            </View>
-            <Text>{"\n"}</Text>
-            <View>
-                <Icon2 
-                name = {'lock1'}
-                size = {28} color = {'rgba(255, 255, 255, .7)'} 
-                style = {styles.inputIcon}
-                />
-                <TextInput
-                style = {styles.input}
-                secureTextEntry = {true}
-                placeholder = {'Confirm Password'}
-                placeholderTextColor = {'rgba(255, 255, 255, .7)'}
-                underlineColorAndroid = 'transparent'
-                onChangeText = {pass => dispatch(setPassword(pass))}
-                value = {password}
-                />
-            </View>
-=======
       <Text style={styles.text}>Sign Up Today! {"\n"}</Text>
->>>>>>> 71d8f7272ea80542da31e3b6e2639bdcb4cf00ba
 
       <View>
         <Icon

@@ -11,20 +11,23 @@ export default function NewWorkoutScreen() {
     const dispatch = useDispatch();
 
     return (
-        <View style={styles.container} >
-            <Text style={styles.title}>Log a New Workout</Text>
+        <View style = {styles.container} >
+            <Text style = {styles.title}>Log a New Workout</Text>
             <TextInput
-                style={styles.woname}
-                placeholder={"Workout Name"}
-                placeholderTextColor={"rgba(0, 0, 0, .7)"}
+                style = {styles.woname}
+                placeholder = {"Workout Name"}
+                placeholderTextColor = {"rgba(0, 0, 0, .7)"}
             />
-            <View style={styles.routine}>
+            <View style = {styles.routine}>
                 {exercises}
             </View>
-
-            <FlatButton text='Add Exercise' onPress={() => dispatch(addExercise())}/>
-            <FlatButton text='Save Workout' />
-            <FlatButton text='Clear Workout' onPress={() => dispatch(clearExercises())}/>
+            <View style = {styles.buttons}>
+                <FlatButton text = 'Add Exercise' onPress = {() => dispatch(addExercise())}/>
+                <Text>{"\n"}</Text>
+                <FlatButton text = 'Save Workout' />
+                <Text>{"\n"}</Text>
+                <FlatButton text = 'Clear Workout' onPress = {() => dispatch(clearExercises())}/>
+            </View>
             
         </View>
     )
@@ -32,9 +35,9 @@ export default function NewWorkoutScreen() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
     title: {
         textAlign: "center",
@@ -43,8 +46,8 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     text: {
-      fontSize: 16,
-      fontWeight: "bold",
+        fontSize: 16,
+        fontWeight: "bold",
     },
     routine: {
         borderWidth: 2,
@@ -53,5 +56,8 @@ const styles = StyleSheet.create({
     },
     woname: {
         textAlign: 'left'
+    },
+    buttons: {
+
     }
   });

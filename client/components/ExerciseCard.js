@@ -8,12 +8,12 @@ export default function ExcerciseCard() {
     return (
         <View>
             <TextInput 
-                //style={}
-                placeholder={"Exercise Name"}
-                placeholderTextColor={"rgba(0, 0, 0, .7)"}
+                style = {styles.exercise}
+                placeholder = {"Exercise Name"}
+                placeholderTextColor = {"rgba(0, 0, 0, .7)"}
             />
             {sets}
-            <TouchableOpacity onPress={() => setSets([...sets, <SetCard key={sets.length} setNumber={sets.length+1}/>])}>
+            <TouchableOpacity onPress = {() => setSets([...sets, <SetCard key = {sets.length} setNumber = {sets.length+1}/>])}>
                 <Text>+</Text>
             </TouchableOpacity>
         </View>
@@ -43,5 +43,8 @@ const styles = StyleSheet.create({
     },
     woname: {
         textAlign: 'left'
+    },
+    exercise: {
+        textAlign: "center"
     }
   });
