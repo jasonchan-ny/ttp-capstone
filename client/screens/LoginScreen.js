@@ -68,7 +68,7 @@ export default function LoginScreen({ navigation }) {
                 {"\n"} Not a member yet? {"\n"}
             </Text>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <TouchableOpacity onPress = {() => navigation.navigate('Register')}>
                 <Text style = {styles.register}>Register</Text>
             </TouchableOpacity>
         </View>

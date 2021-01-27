@@ -9,7 +9,7 @@ import FlatButton from '../components/button'
 
 const {width: WIDTH} = Dimensions.get('window')
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
     const username = useSelector(state => state.user.username);
     const password = useSelector(state => state.user.password);
 
@@ -23,10 +23,7 @@ export default function RegisterScreen() {
     // const [password, setPassword] = useState('');
 
     return(
-        <View style = {styles.container}>
-            <Image source = {{uri: "https://lh3.googleusercontent.com/proxy/W1YTe_z9AziIWPo0FG9sZ0eo8rx3MbvW4F4VJgAsr_7ztxhggacx65FUhWzw0U97221IDkf28OZBdtzrD7rAe3KxbZ6Uc6w80Fw9_jFCG-GqMr0zGT5XwNDx5y3tjC6vros"}}/>
-            {/* <Image source = {{uri: "https://www.pngkey.com/png/full/650-6509695_world-gym-logo-png.png"}}/> */}
-            
+        <View style = {styles.container}>            
             <Text style = {styles.text}>Sign Up Today! {"\n"}</Text>
             
             <View>
