@@ -2,7 +2,6 @@ import React from 'react'
 
 import ExcerciseCard from '../../components/ExerciseCard';
 
-
 const newWorkoutReducer = (state={ exercises: [<ExcerciseCard/>] }, action) => {
     switch(action.type){
         case 'ADD_NEW_EXERCISE':
@@ -11,7 +10,7 @@ const newWorkoutReducer = (state={ exercises: [<ExcerciseCard/>] }, action) => {
             }
         case 'CLEAR_NEW_EXERCISES':
             return {
-                exercises: [<ExcerciseCard/>]
+                exercises: []
             }
         default:
             return state;
