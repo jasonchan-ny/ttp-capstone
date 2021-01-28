@@ -20,13 +20,35 @@ import FlatButton from "../components/button";
 const { width: WIDTH } = Dimensions.get("window");
 
 export default function RegisterScreen({ navigation }) {
-  const username = useSelector((state) => state.user.username);
-  const password = useSelector((state) => state.user.password);
+  //const username = useSelector((state) => state.user.username);
+  //const password = useSelector((state) => state.user.password);
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const dispatch = useDispatch();
 
+  const [registerUser, { data }] = useMutation(REGISTER_USER)
+
+
   const handleClick = () => {
-    dispatch(login());
+    console.log('Credentials', email, username, password, confirmPassword)
+    let something = await loginUser({
+      update(_, { data: { login: userData } }) {
+        //context.login(userData);
+        console.log("User data", userData);
+        dispatch(login());
+      },
+      onError(err) {
+        console.log("in onError in registerUser", err);
+        //put error notifications here
+        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      },
+      variables: { email, username, password, confirmPassword },
+    });
+    console.log(data);
+    console.log(something);
   };
 
   return (
@@ -47,8 +69,8 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Enter Email"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          //onChangeText={(user) => dispatch(setUsername(user))}
-          //value={username}
+          onChangeText={(e) => setEmail(e)}
+          value={email}
         />
       </View>
       <Text>{"\n"}</Text>
@@ -64,7 +86,7 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Enter Username"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          onChangeText={(user) => dispatch(setUsername(user))}
+          onChangeText={(u) => setUsername(u)}
           value={username}
         />
       </View>
@@ -82,8 +104,8 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Enter Password"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          //onChangeText={(pass) => setPassword(pass)}
-          //value={password}
+          onChangeText={(p) => setPassword(p)}
+          value={password}
         />
       </View>
       <Text>{"\n"}</Text>
@@ -100,8 +122,8 @@ export default function RegisterScreen({ navigation }) {
           placeholder={"Confirm Password"}
           placeholderTextColor={"rgba(255, 255, 255, .7)"}
           underlineColorAndroid="transparent"
-          //onChangeText={(pass) => dispatch(setPassword(pass))}
-          //value={password}
+          onChangeText={(cp) => setConfirmPassword(cp)}
+          value={confirmPassword}
         />
       </View>
 
@@ -109,7 +131,6 @@ export default function RegisterScreen({ navigation }) {
         {"\n"} By signing up, you agree to our Terms {"&"} Conditions {"\n"}
       </Text>
 
-      {/* TODO Validate login and api call */}
       <FlatButton text="register" onPress={handleClick} />
 
       <Text style={styles.text}>
@@ -159,3 +180,27 @@ const styles = StyleSheet.create({
       height: 100,
   }
 });
+
+const REGISTER_USER = gql`
+  mutation register(
+    $username: String!
+    $email: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    register(
+      registerInput: {
+        username: $username
+        email: $email
+        password: $password
+        confirmPassword: $confirmPassword
+      }
+    ) {
+      id
+      email
+      username
+      createdAt
+      token
+    }
+  }
+`;
