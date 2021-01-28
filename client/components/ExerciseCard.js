@@ -8,13 +8,18 @@ export default function ExcerciseCard() {
     return (
         <View>
             <TextInput 
-                //style={}
-                placeholder={"Exercise Name"}
-                placeholderTextColor={"rgba(0, 0, 0, .7)"}
+                style = {styles.exercise}
+                placeholder = {"Exercise Name"}
+                placeholderTextColor = {"rgba(0, 0, 0, .7)"}
             />
+            <View style = {styles.routine}>
+                <Text style = {styles.text}>Set        </Text>
+                <Text style = {styles.text}>Reps</Text>
+                <Text style = {styles.text}>Weight</Text>
+            </View>
             {sets}
             <TouchableOpacity onPress={() => setSets([...sets, <SetCard key={sets.length} setNumber={sets.length+1}/>])}>
-                <Text>+</Text>
+                <Text style = {styles.plus}>+</Text>
             </TouchableOpacity>
         </View>
     )
@@ -22,26 +27,28 @@ export default function ExcerciseCard() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
-    title: {
+    exercise: {
+        flexDirection: 'row',
+        flex: 1,
         textAlign: "center",
-        fontSize: 20,
-        fontWeight: "bold",
-        padding: 20,
+        fontWeight: '800'
     },
-    text: {
-      fontSize: 16,
-      fontWeight: "bold",
+    plus: {
+        textAlign: "center",
+        fontWeight: "bold",
+        backgroundColor: 'tomato',
+        borderColor: "white"
     },
     routine: {
-        borderWidth: 2,
-        borderColor: 'lightgray',
-        borderRadius: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: 'tomato',
     },
-    woname: {
-        textAlign: 'left'
-    }
-  });
+    text: {
+        fontWeight: "500",
+    },
+});
