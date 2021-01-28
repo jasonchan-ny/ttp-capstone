@@ -32,22 +32,28 @@ export default function LoginScreen({ navigation }) {
   //const { loading, error, data } = useQuery(GET_WORKOUTS);
 
   const handleClick = async () => {
-    let something = await loginUser({
-      update(_, { data: { login: userData } }) {
-        //context.login(userData);
-        console.log("User data", userData);
-        dispatch(login());
-      },
-      onError(err) {
-        console.log("in onError in loginUser", err);
-        //put error notifications here
-        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      },
-      variables: { username, password },
-    });
-    console.log(data);
-    console.log(something);
+    try {
 
+
+      let something = await loginUser({
+        update(_, { data: { login: userData } }) {
+          //context.login(userData);
+          console.log("User data", userData);
+          dispatch(login());
+        },
+        onError(err) {
+          console.log("in onError in loginUser", err);
+          //put error notifications here
+          //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        },
+        variables: { username, password },
+      });
+      console.log(data);
+      console.log(something);
+    } catch (error) {
+      console.log("error loging in", error);
+      return alert("User does not exist");
+    }
     //console.log(loading, error, data);
   };
 

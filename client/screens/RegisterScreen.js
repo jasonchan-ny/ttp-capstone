@@ -16,6 +16,7 @@ import { login, setUsername, setPassword } from "../redux/actions";
 import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/AntDesign";
 import FlatButton from "../components/button";
+import { gql, useMutation, useQuery } from "@apollo/client";
 
 const { width: WIDTH } = Dimensions.get("window");
 
@@ -32,23 +33,30 @@ export default function RegisterScreen({ navigation }) {
   const [registerUser, { data }] = useMutation(REGISTER_USER)
 
 
-  const handleClick = () => {
-    console.log('Credentials', email, username, password, confirmPassword)
-    let something = await loginUser({
-      update(_, { data: { login: userData } }) {
-        //context.login(userData);
-        console.log("User data", userData);
-        dispatch(login());
-      },
-      onError(err) {
-        console.log("in onError in registerUser", err);
-        //put error notifications here
-        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      },
-      variables: { email, username, password, confirmPassword },
-    });
-    console.log(data);
-    console.log(something);
+  const handleClick = async () => {
+    try {
+
+
+      console.log('Credentials', email, username, password, confirmPassword)
+      let something = await registerUser({
+        update(_, { data: { login: userData } }) {
+          //context.login(userData);
+          console.log("User data", userData);
+          dispatch(login());
+        },
+        onError(err) {
+          console.log("in onError in registerUser", err);
+          //put error notifications here
+          //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        },
+        variables: { email, username, password, confirmPassword },
+      });
+      console.log(data);
+      console.log(something);
+    } catch (error) {
+      console.log("error registering user", error);
+      return alert("Error registering. Please try again");
+    }
   };
 
   return (
@@ -176,8 +184,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   logo: {
-      width: 150,
-      height: 100,
+    width: 150,
+    height: 100,
   }
 });
 
@@ -199,7 +207,6 @@ const REGISTER_USER = gql`
       id
       email
       username
-      createdAt
       token
     }
   }
