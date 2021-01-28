@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { useDispatch, useSelector } from "react-redux";
+import { gql, useMutation, useQuery } from "@apollo/client";
+
 import { login, setUsername, setPassword } from "../redux/actions";
 import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/AntDesign";
@@ -25,13 +27,30 @@ export default function LoginScreen({ navigation }) {
 
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(login());
+  //const [loginUser, { data }] = useMutation(LOGIN_USER)
+
+  const { loading, error, data } = useQuery(GET_WORKOUTS);
+
+  const handleClick = async () => {
+    // let something = await loginUser({
+    //   update(_, { data: { login: userData } }) {
+    //     //context.login(userData);
+    //     console.log('User data',userData)
+    //   },
+    //   onError(err) {
+    //     console.log('in onError in loginUser')
+    //     //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    //   },
+    //   variables: {username, password}});
+    // console.log(data);
+    // console.log(something)
+    //dispatch(login());
+
+    console.log(loading, error, data);
   };
 
   return (
     <View style={styles.container}>
-
       <Image style={styles.logo} source={require("../assets/logo.png")} />
 
       <Text style={styles.text}>Enter Your Credentials{"\n"}</Text>
@@ -120,5 +139,28 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 100,
-  }
+  },
 });
+
+const LOGIN_USER = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      id
+      email
+      username
+      token
+    }
+  }
+`;
+
+const GET_WORKOUTS = gql`
+  query getWorkouts {
+    workout {
+      id
+      bodypart
+      sets {
+        id
+      }
+    }
+  }
+`;
