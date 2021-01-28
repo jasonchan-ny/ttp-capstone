@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import FlatButton from '../components/button'
@@ -11,20 +11,32 @@ export default function NewWorkoutScreen() {
     const dispatch = useDispatch();
 
     return (
-        <View style={styles.container} >
-            <Text style={styles.title}>Log a New Workout</Text>
-            <TextInput
-                style={styles.woname}
-                placeholder={"Workout Name"}
-                placeholderTextColor={"rgba(0, 0, 0, .7)"}
-            />
-            <View style={styles.routine}>
-                {exercises}
-            </View>
+        <View style = {styles.container} >
+            <Text>{"\n"}</Text>
+            <Text style = {styles.title}>Log a New Workout</Text>
 
-            <FlatButton text='Add Exercise' onPress={() => dispatch(addExercise())}/>
-            <FlatButton text='Save Workout' />
-            <FlatButton text='Clear Workout' onPress={() => dispatch(clearExercises())}/>
+            <FlatButton text = 'Add Exercise' onPress = {() => dispatch(addExercise())}/>
+            <Text>{"\n"}</Text>
+            <FlatButton text = 'Save Workout'/>
+            <Text>{"\n"}</Text>
+            <FlatButton text = 'Clear Workout' onPress = {() => dispatch(clearExercises())}/>
+            <Text>{"\n"}</Text>
+
+            <ScrollView style = {styles.card}>
+                <Text>{"\n"}</Text>
+                <TextInput
+                style = {styles.workout}
+                placeholder = {"Workout Name"}
+                placeholderTextColor = {"rgba(0, 0, 0, .7)"}
+                />
+                <Text>{"\n"}</Text>
+                
+                <ScrollView style = {styles.exercise}>
+                    {exercises}
+                </ScrollView>
+            </ScrollView>
+
+            <Text>{"\n"}</Text>
             
         </View>
     )
@@ -32,26 +44,33 @@ export default function NewWorkoutScreen() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
     title: {
+        height: 80,
         textAlign: "center",
         fontSize: 20,
         fontWeight: "bold",
         padding: 20,
     },
-    text: {
-      fontSize: 16,
-      fontWeight: "bold",
-    },
-    routine: {
-        borderWidth: 2,
+    exercise: {
+        // height: 400,
+        // borderWidth: 10,
         borderColor: 'lightgray',
         borderRadius: 5,
+        // paddingHorizontal: 90
     },
-    woname: {
-        textAlign: 'left'
+    workout: {
+        textAlign: 'center',
+        fontSize: 25,
+        fontWeight: '900'
+    },
+    card: {
+        borderRadius: 12,
+        backgroundColor: 'tomato',
+        width: 320,
+        // height: 280,
     }
   });
