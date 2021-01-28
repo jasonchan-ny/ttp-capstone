@@ -27,26 +27,28 @@ export default function LoginScreen({ navigation }) {
 
   const dispatch = useDispatch();
 
-  //const [loginUser, { data }] = useMutation(LOGIN_USER)
+  const [loginUser, { data }] = useMutation(LOGIN_USER)
 
-  const { loading, error, data } = useQuery(GET_WORKOUTS);
+  //const { loading, error, data } = useQuery(GET_WORKOUTS);
 
   const handleClick = async () => {
-    // let something = await loginUser({
-    //   update(_, { data: { login: userData } }) {
-    //     //context.login(userData);
-    //     console.log('User data',userData)
-    //   },
-    //   onError(err) {
-    //     console.log('in onError in loginUser')
-    //     //setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    //   },
-    //   variables: {username, password}});
-    // console.log(data);
-    // console.log(something)
-    //dispatch(login());
+    let something = await loginUser({
+      update(_, { data: { login: userData } }) {
+        //context.login(userData);
+        console.log("User data", userData);
+        dispatch(login());
+      },
+      onError(err) {
+        console.log("in onError in loginUser", err);
+        //put error notifications here
+        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      },
+      variables: { username, password },
+    });
+    console.log(data);
+    console.log(something);
 
-    console.log(loading, error, data);
+    //console.log(loading, error, data);
   };
 
   return (
